@@ -4,8 +4,6 @@ on:
   release:
     types: [ created ]
 
-permissions: write-all
-
 jobs:
 
   improve-release:
