@@ -73,7 +73,10 @@ const main = async () => {
 
             core.setOutput('release', releases[0].tag_name);
             core.setOutput('id', String(releases[0].id));
-            core.setOutput('description', String(updatedRelease.body));
+            core.setOutput('description', String(updatedRelease.description));
+
+            console.log(updatedRelease);
+
         } else {
             core.setFailed("No valid releases");
         }
