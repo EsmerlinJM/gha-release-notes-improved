@@ -1,0 +1,29 @@
+name: 'Release messages action'
+description: 'A Github action will be running on workflows to create improved release message or changelog powered by AI.'
+inputs:
+  repository:
+    description: 'Repository name in full'
+    required: true
+  excludes:
+    description: 'Types of releases to exclude (e.g. pre-release)'
+    required: false
+  github_token:
+    description: 'Github token'
+    required: true
+  openai_api_key:
+    description: 'OpenAI API Key'
+    required: true
+  openai_model:
+    description: 'OpenAI Model'
+    required: false
+    default: 'gpt-3.5-turbo'
+outputs:
+  release:
+    description: 'Latest release name'
+  id:
+    description: 'Latest release ID'
+  description:
+    description: 'Latest release description body'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
