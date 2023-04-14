@@ -63,7 +63,7 @@ const main = async () => {
             const improvedReleaseMessage = completion.data.choices[0].message.content;
             const releaseId = String(releases[0].id);
 
-            const updatedRelease = octokit.repos.updateRelease({
+            octokit.repos.updateRelease({
                 owner: owner,
                 repo: repo,
                 release_id: releaseId,
@@ -73,10 +73,7 @@ const main = async () => {
 
             core.setOutput('release', releases[0].tag_name);
             core.setOutput('id', String(releases[0].id));
-            core.setOutput('description', String(updatedRelease.description));
-
-            console.log(updatedRelease);
-
+            core.setOutput('description', String(improvedReleaseMessage));
         } else {
             core.setFailed("No valid releases");
         }
