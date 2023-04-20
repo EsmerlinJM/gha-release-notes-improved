@@ -6,11 +6,11 @@ A Github action will be running on workflows to create improved release message 
 ### Inputs
 
 Name | Description | Example | Required
---- | --- | ---
+--- | --- | --- | ---
 repository | The Github owner/repository | `EsmerlinJM/gh-release-messages-improved` | true
 openai_api_key | OpenAI API Token | `bMeHCJV1wV8A2JXM....` | true
 github_token | Github auth token (default variable for each action session) | `${{ secrets.GITHUB_TOKEN }}` | true
-excludes | Exclude types of release explited by comma (prerelease | stable | latest | nodraft) | prerelease, draft, etc... | false
+excludes | Exclude types of release explited by comma (prerelease - stable - latest - nodraft) | prerelease, draft, etc... | false
 
 #### Possible values for `type` input
 * *stable* - Get the stable `latest` release
