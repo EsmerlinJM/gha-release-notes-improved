@@ -5,7 +5,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const repository = core.getInput('repository', { required: true });
 const githubToken = core.getInput('github_token', { required: true });
 const openAIApiKey = core.getInput('openai_api_key', { required: true });
-const openAIModel = core.getInput('openai_model', { required: true });
+const openAIModel = core.getInput('openai_model', { required: false });
 const excludes = core.getInput('excludes', { required: false }).trim().split(",");
 
 const octokit = (() => {
@@ -54,7 +54,7 @@ const main = async () => {
                         'no need to mention specific commits. '+
                         'Group things by features / bug fixes / refactors / chores /etc as appropriate. '+
                         'Try to focus on the most important changes. '+
-                        'Try to use correctly emojis on feature / bug fixes / etc.' +
+                        'Try to use emojis on feature / bug fixes / refactor/ chores / etc.' +
                         'Try to mention collaborators as well.'+
                         'Return it in markdown format.',
                 },
