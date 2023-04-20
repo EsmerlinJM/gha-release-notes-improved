@@ -20,6 +20,8 @@ const main = async () => {
     try {
         const [owner, repo] = repository.split("/");
 
+        core.debug('[*] Getting latest release...');
+
         var releases  = await octokit.repos.listReleases({
             owner: owner,
             repo: repo,
@@ -35,6 +37,8 @@ const main = async () => {
         }
 
         if (releases.length) {
+            core.debug('[*] Generating release notes with OPENAI...');
+
             const configuration = new Configuration({
                 apiKey: openAIApiKey,
             });
@@ -48,9 +52,10 @@ const main = async () => {
                     role: 'system',
                     'content': 'Your task is to rewrite release notes in a more concise manner, '+
                         'no need to mention specific commits. '+
-                        'Group things by features / bug fixes / etc as appropriate. '+
+                        'Group things by features / bug fixes / refactors / chores /etc as appropriate. '+
                         'Try to focus on the most important changes. '+
-                        'Try to use correctly emojis on feature / bug fixes / etc' +
+                        'Try to use correctly emojis on feature / bug fixes / etc.' +
+                        'Try to mention collaborators as well.'+
                         'Return it in markdown format.',
                 },
                 {
@@ -59,6 +64,8 @@ const main = async () => {
                 }
             ],
             });
+
+            core.debug('[*] Updating latest release...');
 
             const improvedReleaseMessage = completion.data.choices[0].message.content;
             const releaseId = String(releases[0].id);
