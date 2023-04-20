@@ -9,6 +9,7 @@ Name | Description | Example | Required
 --- | --- | --- | ---
 repository | The Github owner/repository | `EsmerlinJM/gh-release-messages-improved` | true
 openai_api_key | OpenAI API Token | `bMeHCJV1wV8A2JXM....` | true
+openai_model | OpenAI Model | `gpt-3.5-turbo` | false
 github_token | Github auth token (default variable for each action session) | `${{ secrets.GITHUB_TOKEN }}` | true
 excludes | Exclude types of release explited by comma (prerelease - stable - latest - nodraft) | prerelease, draft, etc... | false
 
