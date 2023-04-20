@@ -1,5 +1,8 @@
 name: 'Release messages action'
 description: 'A Github action will be running on workflows to create improved release message or changelog powered by AI.'
+branding:
+  icon: 'arrow-up-right'
+  color: 'orange'
 inputs:
   repository:
     description: 'Repository name in full'
